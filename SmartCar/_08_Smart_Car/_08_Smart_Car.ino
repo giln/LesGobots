@@ -78,7 +78,7 @@ uint16_t micVal;
 void setup() {
   // 把你的设置代码放在这，执行一次:
   Serial.begin(9600);
-  pinMode(PIN_BUZZER, OUTPUT);
+  //pinMode(PIN_BUZZER, OUTPUT);
   pinMode(PIN_LINEA, INPUT);
   pinMode(PIN_LINEB, INPUT);
   strip.begin();
@@ -106,16 +106,18 @@ void loop() {
     irrecv.enableIRIn();
     irrecv.resume();
   }
-  micVal = analogRead(PIN_MIC);
+  //micVal = analogRead(PIN_MIC);
   lineValA = analogRead(PIN_LINEA);
   lineValB = analogRead(PIN_LINEB);
 #if DEBUG
-  Serial.print("MIC Val:");
+  Serial.print("\tMIC Val:");
   Serial.print(micVal);
   Serial.print("\tLINEA Val:");
   Serial.print(lineValA);
   Serial.print("\tLINEB Val:");
-  Serial.println(lineValB);
+  Serial.print(lineValB);
+  Serial.print("\tTrack Ligne:");
+  Serial.println(trackLigne);
 #endif
 
   switch (mode)

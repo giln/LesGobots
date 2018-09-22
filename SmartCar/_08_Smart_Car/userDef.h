@@ -1,4 +1,4 @@
-#define DEBUG        0       //Serial monitor debugging ON/OFF.
+#define DEBUG        1      //Serial monitor debugging ON/OFF.
 #define PIN_RECV     4       //Infrared Receiver pin.
 #define PIN_BUZZER   10      //Buzzer pin.
 #define PIN_LED      12      //ColorLED pin.

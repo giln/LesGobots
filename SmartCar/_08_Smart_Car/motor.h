@@ -11,6 +11,9 @@
 #define RIGHT  1
 #define LEFT   0
 
+#define LIGN_DETECT 200
+#define LIGN_STOP 3
+
 Motor MotorLeft(MOTOR0_PINA, MOTOR0_PINB);
 Motor MotorRight(MOTOR1_PINA, MOTOR1_PINB);
 
@@ -22,6 +25,8 @@ uint32_t micTime = 0;
 uint32_t trackTime = 0, trackTime1 = 0;
 bool back;
 bool fback = true;
+uint32_t trackLigne = 0;
+uint32_t ligneTime = 0,ligneTime1 = 0;
 
 void motorUpdate(int16_t speed1, int16_t speed2)
 {
@@ -104,8 +109,25 @@ void remoteControl(uint8_t remoteCmd)
 
 void trackControl(uint16_t trackVal1, uint16_t trackVal2)
 {
-  leftSpeed = ((1000 - trackVal1) / 15);
-  rightSpeed = ((1000 - trackVal2) / 15);
+    ligneTime1 = millis();
+   if((ligneTime1 > ligneTime) && (trackVal1 < LIGN_DETECT) && (trackVal2 < LIGN_DETECT)) {
+    trackLigne += 1;
+    ligneTime = millis() + 1000;
+   }
+
+   if ((ligneTime1 > ligneTime) && trackLigne >= LIGN_STOP) {
+    leftSpeed = 0;
+    rightSpeed = 0;
+   }
+   else {
+    trackVal1 = constrain(trackVal1, 0, 1023);
+    leftSpeed = (map(trackVal1, 0, 1023, (30), 255));
+    trackVal2 = constrain(trackVal2, 0, 1023);
+    rightSpeed = (map(trackVal2, 0, 1023, (30 ), 255));
+   }
+    
+  //leftSpeed = ((trackVal1) / 15);
+  //rightSpeed = ((trackVal2) / 15);
   setAllColor(COLOR_COLD);
 }
 

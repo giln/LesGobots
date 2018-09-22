@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#define DEBUG
+//#define DEBUG
 
 #ifdef DEBUG
   #include <SoftwareSerial.h>
@@ -83,7 +83,7 @@ void tournerAGauche(double angle)
 void setup()
 {
   #ifdef DEBUG
-    Serial.begin(9600);
+    Serial.begin(115200);
   #endif
     cpt_aller = 0;
     compteTour = 0;
@@ -114,9 +114,6 @@ void setup()
 
 void loop()
 {
-    //tournerADroite(0);
-    //tournerAGauche(180);
-
 
     DEBUG_PRINTLN("loop +++++++++++++++++++++++++++++++++++++");
     
@@ -208,9 +205,7 @@ void loop()
     tournerADroite(180);
   }
   
-  
 }
-
 
 #ifdef DEBUG
  delay(100);
@@ -221,7 +216,6 @@ void loop()
     }
     
     _loop();
-    
 }
 
 void _delay(float seconds){
