@@ -117,7 +117,10 @@ void loop() {
   Serial.print("\tLINEB Val:");
   Serial.print(lineValB);
   Serial.print("\tTrack Ligne:");
-  Serial.println(trackLigne);
+  Serial.print(trackLigne);
+  Serial.print("\tTrack Ligne1:");
+  Serial.println(trackLigne1);
+  
 #endif
 
   switch (mode)

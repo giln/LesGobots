@@ -49,6 +49,7 @@ uint8_t recvRemote(uint32_t recvCode)
       break;
     case BUTTON_B:
       trackLigne = 0;
+      trackLigne1 = 0;
       motorCoast();
       setAllLed(COLOR_RED);
       tone(PIN_BUZZER, TONE_DO);

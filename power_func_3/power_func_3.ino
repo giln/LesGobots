@@ -18,8 +18,8 @@ const int maxTours = 1;
 const int maxZeros = 3;
 const int delaiLectureHaut = 5000;
 const int distanceMin1 = 25;
-const int distanceMin2 = 50;
-const int distanceMax1 = 100;
+const int distanceMin2 = 40;
+const int distanceMax1 = 110;
 const int distanceMax2 = 125;
 
 int cpt_aller;
